@@ -1,0 +1,717 @@
+/**
+ * Site Notice Banner - Settings Panel Styles
+ * Professional UI with 4-tier plan support and feature gating
+ */
+
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: #f9fafb;
+    color: #111827;
+    line-height: 1.6;
+    padding: 0;
+    margin: 0;
+}
+
+/* Settings Container */
+.settings-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+/* Header */
+.settings-header {
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.settings-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #6b7280;
+    margin: 0 0 12px 0;
+}
+
+/* Current Plan Badge */
+.current-plan-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    background: #f3f4f6;
+    border: 2px solid #d1d5db;
+}
+
+.current-plan-badge.plan-free {
+    background: #f3f4f6;
+    border-color: #9ca3af;
+    color: #6b7280;
+}
+
+.current-plan-badge.plan-light {
+    background: #dbeafe;
+    border-color: #60a5fa;
+    color: #1e40af;
+}
+
+.current-plan-badge.plan-business {
+    background: #d1fae5;
+    border-color: #34d399;
+    color: #065f46;
+}
+
+.current-plan-badge.plan-business_pro {
+    background: #e9d5ff;
+    border-color: #a78bfa;
+    color: #6b21a8;
+}
+
+.plan-label {
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+/* Settings Form */
+.settings-form {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Setting Group */
+.setting-group {
+    margin-bottom: 24px;
+    position: relative;
+}
+
+.setting-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.label-text {
+    font-size: 15px;
+    font-weight: 600;
+    color: #111827;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.setting-description {
+    font-size: 13px;
+    color: #6b7280;
+    margin-top: 6px;
+    margin-bottom: 8px;
+}
+
+.setting-description.warning {
+    color: #f59e0b;
+    font-weight: 500;
+}
+
+/* Locked Icon */
+.locked-icon {
+    font-size: 16px;
+    opacity: 0.6;
+    cursor: help;
+}
+
+/* Plan Badges */
+.plan-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.plan-badge:not(.premium):not(.pro) {
+    background: #e5e7eb;
+    color: #6b7280;
+}
+
+.plan-badge.premium {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.plan-badge.pro {
+    background: #e9d5ff;
+    color: #6b21a8;
+}
+
+/* Feature Locked/Unlocked States */
+.feature-locked {
+    opacity: 0.6;
+    pointer-events: none;
+    position: relative;
+}
+
+.feature-unlocked {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Divider */
+.divider {
+    height: 1px;
+    background-color: #e5e7eb;
+    margin: 24px 0;
+}
+
+/* Toggle Switch */
+.toggle-switch {
+    position: relative;
+    width: 48px;
+    height: 24px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #d1d5db;
+    border-radius: 24px;
+    transition: 0.3s;
+}
+
+.toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.toggle-switch input:checked + .toggle-slider {
+    background-color: #2563eb;
+}
+
+.toggle-switch input:checked + .toggle-slider:before {
+    transform: translateX(24px);
+}
+
+.toggle-switch input:disabled + .toggle-slider {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Text Input and Textarea */
+textarea,
+.color-text-input,
+.plan-selector {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-family: inherit;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+textarea:focus,
+.color-text-input:focus,
+.plan-selector:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+textarea:disabled,
+.color-text-input:disabled,
+input:disabled {
+    background-color: #f9fafb;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.char-counter {
+    font-size: 12px;
+    color: #6b7280;
+    text-align: right;
+    margin-top: 4px;
+}
+
+/* Radio Group */
+.radio-group {
+    display: flex;
+    gap: 16px;
+    margin-top: 8px;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px 16px;
+    border: 2px solid #d1d5db;
+    border-radius: 8px;
+    transition: all 0.2s;
+    flex: 1;
+}
+
+.radio-option:hover:not(:has(input:disabled)) {
+    border-color: #9ca3af;
+}
+
+.radio-option input[type="radio"] {
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.radio-option input[type="radio"]:disabled {
+    cursor: not-allowed;
+}
+
+.radio-option input[type="radio"]:checked ~ .radio-label {
+    font-weight: 600;
+}
+
+.radio-option:has(input[type="radio"]:checked):not(:has(input:disabled)) {
+    border-color: #2563eb;
+    background-color: #eff6ff;
+}
+
+.radio-option:has(input:disabled) {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.radio-label {
+    font-size: 14px;
+    color: #374151;
+}
+
+/* Color Input Group */
+.color-input-group {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+input[type="color"] {
+    width: 60px;
+    height: 40px;
+    border: 2px solid #d1d5db;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 2px;
+}
+
+input[type="color"]:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+    border: none;
+    border-radius: 6px;
+}
+
+.color-text-input {
+    flex: 1;
+    text-transform: uppercase;
+    font-family: 'Monaco', 'Courier New', monospace;
+}
+
+/* Number Input Group */
+.number-input-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+input[type="number"] {
+    width: 120px;
+    padding: 10px 12px;
+    font-size: 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input[type="number"]:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+input[type="number"]:disabled {
+    background-color: #f9fafb;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.input-suffix {
+    font-size: 13px;
+    color: #6b7280;
+}
+
+/* Plan Selector */
+.plan-selector {
+    cursor: pointer;
+    background-color: white;
+}
+
+/* Preview Section */
+.preview-section {
+    margin-top: 32px;
+}
+
+.preview-section h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #111827;
+}
+
+.preview-container {
+    border: 2px dashed #d1d5db;
+    border-radius: 8px;
+    padding: 16px;
+    background-color: #f9fafb;
+}
+
+.preview-banner {
+    width: 100%;
+    padding: 12px 20px;
+    text-align: center;
+    font-size: 15px;
+    border-radius: 6px;
+    transition: all 0.3s;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#preview-text {
+    display: block;
+    flex: 1;
+}
+
+.preview-close-button {
+    position: absolute;
+    right: 12px;
+    background: transparent;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    opacity: 0.8;
+    border-radius: 4px;
+}
+
+.preview-close-button:hover {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Dev Setting */
+.dev-setting {
+    background-color: #fef3c7;
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid #fbbf24;
+}
+
+/* Pricing Info */
+.pricing-info {
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 2px solid #e5e7eb;
+}
+
+.pricing-info h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: #111827;
+    text-align: center;
+}
+
+/* Plans Grid */
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.plan-card {
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s;
+    background: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.plan-card:hover {
+    border-color: #9ca3af;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.plan-card.current-plan {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Plan Ribbon */
+.plan-ribbon {
+    position: absolute;
+    top: 12px;
+    right: -32px;
+    background: #34d399;
+    color: white;
+    padding: 4px 40px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transform: rotate(45deg);
+    letter-spacing: 0.5px;
+}
+
+.plan-ribbon.pro-ribbon {
+    background: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%);
+}
+
+/* Plan Header */
+.plan-header {
+    margin-bottom: 16px;
+}
+
+.plan-header h4 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 8px;
+}
+
+.plan-price {
+    font-size: 24px;
+    font-weight: 700;
+    color: #2563eb;
+}
+
+.plan-price .period {
+    font-size: 14px;
+    font-weight: 400;
+    color: #6b7280;
+}
+
+/* Plan Features */
+.plan-features {
+    list-style: none;
+    margin-bottom: 16px;
+    min-height: 120px;
+}
+
+.plan-features li {
+    padding: 6px 0;
+    font-size: 13px;
+    color: #374151;
+}
+
+.plan-features li strong {
+    color: #111827;
+}
+
+.plan-note {
+    font-size: 12px;
+    color: #6b7280;
+    font-style: italic;
+    margin-top: 8px;
+}
+
+/* Plan-specific styling */
+.light-plan {
+    border-color: #60a5fa;
+}
+
+.light-plan:hover {
+    border-color: #3b82f6;
+}
+
+.business-plan {
+    border-color: #34d399;
+}
+
+.business-plan:hover {
+    border-color: #10b981;
+}
+
+.business-pro-plan {
+    background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
+    border-color: #a78bfa;
+}
+
+.business-pro-plan:hover {
+    border-color: #8b5cf6;
+}
+
+/* Upgrade Button */
+.upgrade-button {
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.upgrade-button:hover {
+    background-color: #1d4ed8;
+}
+
+.upgrade-button:active {
+    background-color: #1e40af;
+}
+
+/* Settings Footer */
+.settings-footer {
+    margin-top: 24px;
+    text-align: center;
+}
+
+.save-button {
+    padding: 12px 32px;
+    background-color: #059669;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    min-width: 200px;
+}
+
+.save-button:hover {
+    background-color: #047857;
+}
+
+.save-button:active {
+    background-color: #065f46;
+}
+
+.save-status {
+    margin-top: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    min-height: 20px;
+}
+
+.save-status.success {
+    color: #059669;
+}
+
+.save-status.error {
+    color: #dc2626;
+}
+
+.save-status.loading {
+    color: #6b7280;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .settings-container {
+        padding: 16px;
+    }
+
+    .settings-header h1 {
+        font-size: 24px;
+    }
+
+    .settings-form {
+        padding: 16px;
+    }
+
+    .radio-group {
+        flex-direction: column;
+    }
+
+    .color-input-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    input[type="color"] {
+        width: 100%;
+    }
+
+    .plans-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Focus visible for keyboard navigation */
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+}

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Notice Banner - Settings</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <div class="settings-container">
+        <!-- Header -->
+        <div class="settings-header">
+            <h1>Site Notice Banner Settings</h1>
+            <p class="subtitle">Configure your site-wide notification banner</p>
+            <div class="current-plan-badge" id="currentPlanBadge">
+                <span class="plan-label">Current Plan:</span>
+                <span class="plan-name" id="currentPlanName">Free</span>
+            </div>
+        </div>
+
+        <!-- Settings Form -->
+        <div class="settings-form">
+
+            <!-- Enable/Disable Toggle -->
+            <div class="setting-group">
+                <label class="setting-label">
+                    <span class="label-text">Enable Banner</span>
+                    <div class="toggle-switch">
+                        <input type="checkbox" id="enabled" checked>
+                        <span class="toggle-slider"></span>
+                    </div>
+                </label>
+                <p class="setting-description">Show or hide the banner on your site</p>
+                <span class="plan-badge">All Plans</span>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Banner Text -->
+            <div class="setting-group">
+                <label for="bannerText" class="setting-label">
+                    <span class="label-text">Banner Message</span>
+                </label>
+                <textarea
+                    id="bannerText"
+                    rows="3"
+                    placeholder="Enter your important message here..."
+                    maxlength="200"
+                ></textarea>
+                <p class="setting-description">The text that will appear in your banner (max 200 characters)</p>
+                <p class="char-counter"><span id="charCount">0</span> / 200</p>
+                <span class="plan-badge">All Plans</span>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Background Color (Business & Business Pro only) -->
+            <div class="setting-group feature-locked" data-required-plan="business">
+                <label for="backgroundColor" class="setting-label">
+                    <span class="label-text">Background Color</span>
+                    <span class="locked-icon" title="Available in Business and Business Pro plans">🔒</span>
+                </label>
+                <div class="color-input-group">
+                    <input type="color" id="backgroundColor" value="#2563eb" disabled>
+                    <input type="text" id="backgroundColorText" value="#2563eb" class="color-text-input" disabled>
+                </div>
+                <p class="setting-description">Custom banner background color</p>
+                <span class="plan-badge premium">Business & Business Pro</span>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Text Color (Business & Business Pro only) -->
+            <div class="setting-group feature-locked" data-required-plan="business">
+                <label for="textColor" class="setting-label">
+                    <span class="label-text">Text Color</span>
+                    <span class="locked-icon" title="Available in Business and Business Pro plans">🔒</span>
+                </label>
+                <div class="color-input-group">
+                    <input type="color" id="textColor" value="#ffffff" disabled>
+                    <input type="text" id="textColorText" value="#ffffff" class="color-text-input" disabled>
+                </div>
+                <p class="setting-description">Custom banner text color</p>
+                <span class="plan-badge premium">Business & Business Pro</span>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Position Selector (Business & Business Pro only) -->
+            <div class="setting-group feature-locked" data-required-plan="business">
+                <label class="setting-label">
+                    <span class="label-text">Banner Position</span>
+                    <span class="locked-icon" title="Available in Business and Business Pro plans">🔒</span>
+                </label>
+                <div class="radio-group">
+                    <label class="radio-option">
+                        <input type="radio" name="position" value="top" checked disabled>
+                        <span class="radio-label">Top of Page</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="position" value="bottom" disabled>
+                        <span class="radio-label">Bottom of Page</span>
+                    </label>
+                </div>
+                <p class="setting-description">Choose where the banner appears on your site</p>
+                <span class="plan-badge premium">Business & Business Pro</span>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Close Button (Business Pro only) -->
+            <div class="setting-group feature-locked" data-required-plan="business_pro">
+                <label class="setting-label">
+                    <span class="label-text">Show Close Button</span>
+                    <span class="locked-icon" title="Available in Business Pro plan only">🔒</span>
+                    <div class="toggle-switch">
+                        <input type="checkbox" id="showCloseButton" disabled>
+                        <span class="toggle-slider"></span>
+                    </div>
+                </label>
+                <p class="setting-description">Allow visitors to close the banner with an ❌ button</p>
+                <span class="plan-badge pro">Business Pro Only</span>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Auto-Hide Timer (Business Pro only) -->
+            <div class="setting-group feature-locked" data-required-plan="business_pro">
+                <label for="autoHideSeconds" class="setting-label">
+                    <span class="label-text">Auto-Hide After (seconds)</span>
+                    <span class="locked-icon" title="Available in Business Pro plan only">🔒</span>
+                </label>
+                <div class="number-input-group">
+                    <input type="number" id="autoHideSeconds" min="0" max="60" value="0" disabled>
+                    <span class="input-suffix">seconds (0 = disabled)</span>
+                </div>
+                <p class="setting-description">Automatically hide the banner after specified seconds</p>
+                <span class="plan-badge pro">Business Pro Only</span>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Dev/Testing: Plan Selector -->
+            <div class="setting-group dev-setting">
+                <label class="setting-label">
+                    <span class="label-text">Current Plan (Dev/Testing Only)</span>
+                </label>
+                <select id="planSelector" class="plan-selector">
+                    <option value="free">Free (Editor Preview Only)</option>
+                    <option value="light">Light ($2-3/month)</option>
+                    <option value="business">Business ($4-5/month)</option>
+                    <option value="business_pro">Business Pro ($7-9/month)</option>
+                </select>
+                <p class="setting-description warning">
+                    ⚠️ Development setting: In production, plan is determined by Wix Pricing API
+                </p>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Preview Section -->
+            <div class="preview-section">
+                <h3>Preview</h3>
+                <div class="preview-container">
+                    <div id="preview-banner" class="preview-banner">
+                        <span id="preview-text">Your important message appears here</span>
+                        <button id="preview-close-button" class="preview-close-button" style="display: none;">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M12 4L4 12M4 4L12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <p class="setting-description">Live preview of your banner appearance</p>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Pricing Plans Comparison -->
+            <div class="pricing-info">
+                <h3>Choose Your Plan</h3>
+
+                <div class="plans-grid">
+                    <!-- Free Plan -->
+                    <div class="plan-card free-plan" data-plan="free">
+                        <div class="plan-header">
+                            <h4>Free</h4>
+                            <span class="plan-price">$0</span>
+                        </div>
+                        <ul class="plan-features">
+                            <li>✓ Editor preview only</li>
+                            <li>✓ Basic text message</li>
+                            <li>✓ Default colors</li>
+                            <li>✓ Top position only</li>
+                            <li>✗ Not visible on live site</li>
+                        </ul>
+                        <p class="plan-note">Perfect for testing and preview</p>
+                    </div>
+
+                    <!-- Light Plan -->
+                    <div class="plan-card light-plan" data-plan="light">
+                        <div class="plan-header">
+                            <h4>Light</h4>
+                            <span class="plan-price">$2-3<span class="period">/mo</span></span>
+                        </div>
+                        <ul class="plan-features">
+                            <li>✓ <strong>Visible on live site</strong></li>
+                            <li>✓ Default colors</li>
+                            <li>✓ Top position only</li>
+                            <li>✓ Enable/disable toggle</li>
+                            <li>✓ No watermark</li>
+                        </ul>
+                        <button class="upgrade-button" data-plan="light">Upgrade to Light</button>
+                    </div>
+
+                    <!-- Business Plan -->
+                    <div class="plan-card business-plan" data-plan="business">
+                        <div class="plan-ribbon">Popular</div>
+                        <div class="plan-header">
+                            <h4>Business</h4>
+                            <span class="plan-price">$4-5<span class="period">/mo</span></span>
+                        </div>
+                        <ul class="plan-features">
+                            <li>✓ Everything in Light</li>
+                            <li>✓ <strong>Custom background color</strong></li>
+                            <li>✓ <strong>Custom text color</strong></li>
+                            <li>✓ <strong>Top or bottom position</strong></li>
+                            <li>✓ Full customization</li>
+                        </ul>
+                        <button class="upgrade-button" data-plan="business">Upgrade to Business</button>
+                    </div>
+
+                    <!-- Business Pro Plan -->
+                    <div class="plan-card business-pro-plan" data-plan="business_pro">
+                        <div class="plan-ribbon pro-ribbon">Best Value</div>
+                        <div class="plan-header">
+                            <h4>Business Pro</h4>
+                            <span class="plan-price">$7-9<span class="period">/mo</span></span>
+                        </div>
+                        <ul class="plan-features">
+                            <li>✓ Everything in Business</li>
+                            <li>✓ <strong>Optional close button</strong></li>
+                            <li>✓ <strong>Auto-hide timer</strong></li>
+                            <li>✓ Priority support</li>
+                            <li>✓ Advanced features</li>
+                        </ul>
+                        <button class="upgrade-button" data-plan="business_pro">Upgrade to Business Pro</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Save Button -->
+        <div class="settings-footer">
+            <button class="save-button" id="saveButton">Save Settings</button>
+            <p class="save-status" id="saveStatus"></p>
+        </div>
+    </div>
+
+    <script src="./settings.js"></script>
+</body>
+</html>

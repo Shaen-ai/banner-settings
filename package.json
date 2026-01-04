@@ -1,0 +1,42 @@
+{
+  "name": "@wix-site-notice-banner/settings",
+  "version": "1.0.0",
+  "description": "Site Notice Banner Settings Panel - Configuration interface for Wix Editor",
+  "main": "settings.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "wix",
+    "settings",
+    "banner",
+    "configuration",
+    "editor-panel"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/wix-site-notice-banner.git",
+    "directory": "settings"
+  },
+  "wixSettings": {
+    "panelId": "site-notice-banner-settings",
+    "name": "Site Notice Banner Settings",
+    "version": "1.0.0",
+    "entryPoint": "index.html",
+    "widgetId": "site-notice-banner-widget",
+    "features": {
+      "plan_management": {
+        "description": "4-tier plan system with feature gating",
+        "plans": ["free", "light", "business", "business_pro"]
+      },
+      "live_preview": {
+        "description": "Real-time banner preview in settings panel"
+      },
+      "feature_gating": {
+        "description": "Automatic feature locking based on plan tier"
+      }
+    }
+  }
+}
